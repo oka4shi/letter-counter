@@ -3,9 +3,7 @@
 </script>
 
 <script lang="ts">
-    const count_num = (text: string): number => {
-        return [...text].length;
-    };
+    const count_num = (text: string): number =>  [...text].length;
 
     const count_without_spaces = (text: string): number => {
         const reg =
