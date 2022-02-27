@@ -96,7 +96,8 @@
     textarea {
         width: 100%;
         height: 50vh;
-        font-size: 16px;
+        font-size: 18px;
         line-height: 24px;
+        font-family:inherit;
     }
 </style>
