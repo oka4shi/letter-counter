@@ -13,7 +13,7 @@
     <p>
         Copyright (c) 2022 Goahi some rights reserved. This works is licensed under the MIT license.
         GitHub:
-        <a href="https://github.com/goahi/letter-counter">goahi/letter-counter</a>
+        <a href="https://github.com/goahi/letter-counter" target="_blank" rel="noopener noreferrer">goahi/letter-counter</a>
     </p>
 </footer>
 
