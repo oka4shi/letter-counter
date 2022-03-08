@@ -18,10 +18,12 @@
 </header>
 
 <style>
+    :root {
+        --size: 3px;
+    }
     header {
         width: 100%;
-        height: 3rem;
-        background-color: lightskyblue;
+        min-height: 3.5rem;
         position: fixed;
         top: 0;
         left: 0;
@@ -29,12 +31,11 @@
 
         display: flex;
         justify-content: flex-start;
+        flex-direction: row;
         align-items: center;
-    }
 
-    h1 {
-        font-size: 2rem;
-        margin: 0 0.5rem;
+        background-color: rgba(0, 0, 0, 0.75);
+        border-bottom: 1.5px solid #888;
     }
 
     nav {
@@ -43,11 +44,26 @@
         justify-content: center;
     }
 
-    ul {
+    @media only screen and (max-width: 599px) {
+        header {
+            flex-direction: column;
+        }
+
+        nav {
+            margin: 0.2rem 0 calc(0.6rem + 3px);
+        }
+    }
+
+    h1 {
+        margin: 0 0.5rem;
+        font-size: 2rem;
+        color: var(--tertiary-color);
+    }
+
+    nav ul {
         position: relative;
         padding: 0;
         margin: 0;
-        height: 3em;
 
         display: flex;
         justify-content: center;
@@ -56,26 +72,38 @@
         background-size: contain;
     }
 
-    li {
+    nav li {
         padding: 0 0.5rem;
+        position: relative;
     }
 
     li.active a {
-        --size: 3px;
         border-bottom: var(--size) solid var(--accent-color);
     }
 
     nav a {
         padding: 0.2rem 0.25rem;
-        color: var(--heading-color);
+        color: var(--tertiary-color);
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.1em;
         text-decoration: none;
-        transition: color 0.2s linear;
     }
 
-    a:hover {
-        color: rgb(255, 255, 255);
+    nav a::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: calc(-0.2rem - 5px / 2);
+        width: 0px;
+        border-bottom: var(--size) solid var(--accent-color);
+
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(-50%);
+        transform-origin: center top;
+    }
+
+    nav a:hover::after {
+        width: 80%;
     }
 </style>
