@@ -45,7 +45,7 @@
     }
 
     $: {
-    counts = count(text)
+        counts = count(text);
         input_text = text;
     }
 </script>
@@ -57,9 +57,30 @@
 <section class="content">
     <p>ブラウザへの最終保存:{saved_deta}</p>
     <textarea bind:value={text} autocomplete="off" />
-    <p>文字数: {counts.letterCount}</p>
-    <p>文字数(空白以外): {counts.withoutSpacesCount}</p>
-    <p>単語数(英語): {counts.wordCount}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>種類</th>
+                <th>全体</th>
+                <th>選択部分</th>
+            </tr>
+        </thead>
+        <tr>
+            <th>文字数</th>
+            <td>{counts.letterCount}</td>
+            <td />
+        </tr>
+        <tr>
+            <th>文字数(空白以外)</th>
+            <td>{counts.withoutSpacesCount}</td>
+            <td />
+        </tr>
+        <tr>
+            <th>単語数(英語)</th>
+            <td>{counts.wordCount}</td>
+            <td />
+        </tr>
+    </table>
 </section>
 
 <style>
@@ -78,5 +99,49 @@
         font-size: 18px;
         line-height: 24px;
         font-family: inherit;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+
+        table-layout: fixed;
+        width: 100%;
+    }
+
+    table th,
+    table td {
+        padding: 0.75rem 0;
+        text-align: center;
+        border: solid 2px #fff;
+    }
+
+    table thead th {
+        background-color: #576ca8;
+        color: var(--tertiary-color);
+    }
+
+    table tr:nth-child(2n + 1) {
+        background-color: #eee;
+    }
+
+    table th {
+        font-size: 1.125rem;
+    }
+
+    table td {
+        font-size: 1.625rem;
+    }
+
+    table thead th:nth-of-type(1) {
+        width: 35%;
+    }
+
+    table thead th:nth-of-type(2) {
+        width: 32.5%;
+    }
+    table thead th:nth-of-type(3) {
+        width: 32.5%;
     }
 </style>
