@@ -1,8 +1,6 @@
 <script lang="ts">
     import Header from "$lib/Header.svelte";
     import "../app.css";
-
-    export const prerender = true;
 </script>
 
 <Header />
@@ -36,16 +34,10 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 40px;
+        padding: 40px 1rem;
     }
 
     footer a {
         font-weight: bold;
-    }
-
-    @media (min-width: 480px) {
-        footer {
-            padding: 40px 1rem;
-        }
     }
 </style>
