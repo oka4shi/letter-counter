@@ -11,7 +11,7 @@
 
 <footer>
     <p>
-        Copyright (c) 2022 Goahi some rights reserved. This works is licensed under the MIT license.
+        Copyright (c) 2022 Goahi some rights reserved. This application is licensed under the MIT license.
         GitHub:
         <a href="https://github.com/goahi/letter-counter" target="_blank" rel="noopener noreferrer">goahi/letter-counter</a>
     </p>
@@ -43,7 +43,7 @@
 
     @media (min-width: 480px) {
         footer {
-            padding: 40px 0;
+            padding: 40px 1rem;
         }
     }
 </style>
