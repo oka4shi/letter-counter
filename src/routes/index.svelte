@@ -12,7 +12,7 @@
     let counts: LetterCounts;
 
     let input_text = "";
-    let saved_deta = "";
+    let saved_date = "";
 
     /* Save and load from localStorage */
     const autosave_interval = 5;
@@ -22,13 +22,13 @@
         text = stored_text === null ? "" : stored_text;
 
         const now = new Date();
-        saved_deta = now.toLocaleTimeString();
+        saved_date = now.toLocaleTimeString();
 
         setInterval(() => {
             if (localStorage.getItem("text") !== text) {
                 localStorage.setItem("text", input_text);
                 const now = new Date();
-                saved_deta = now.toLocaleTimeString();
+                saved_date = now.toLocaleTimeString();
             }
         }, autosave_interval * 1000);
 
@@ -55,7 +55,7 @@
 </svelte:head>
 
 <section class="content">
-    <p>ブラウザへの最終保存:{saved_deta}</p>
+    <p>ブラウザへの最終保存:{saved_date}</p>
     <textarea bind:value={text} autocomplete="off" />
     <table>
         <thead>
