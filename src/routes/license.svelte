@@ -8,9 +8,6 @@
     // ...but if the client-side router is already loaded
     // (i.e. we came here from elsewhere in the app), use it
     export const router = browser;
-
-    // it so that it gets served as a static asset in prod
-    export const prerender = true;
 </script>
 
 <svelte:head>

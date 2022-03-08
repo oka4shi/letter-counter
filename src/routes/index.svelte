@@ -1,7 +1,6 @@
 <script context="module">
     import { browser } from "$app/env";
     import { onDestroy } from "svelte";
-    export const prerender = true;
 </script>
 
 <script lang="ts">

@@ -1,6 +1,8 @@
 <script lang="ts">
     import Header from "$lib/Header.svelte";
     import "../app.css";
+
+    export const prerender = true;
 </script>
 
 <Header />
