@@ -37,28 +37,27 @@
 
         text = stored_text === null ? "" : stored_text;
 
-        const now = new Date()
+        const now = new Date();
         saved_deta = now.toLocaleTimeString();
 
-
         setInterval(() => {
-        if (localStorage.getItem("text") !== text){
-            localStorage.setItem("text", input_text);
-            const now = new Date()
-            saved_deta = now.toLocaleTimeString();
-            
-        }}, autosave_interval * 1000);
+            if (localStorage.getItem("text") !== text) {
+                localStorage.setItem("text", input_text);
+                const now = new Date();
+                saved_deta = now.toLocaleTimeString();
+            }
+        }, autosave_interval * 1000);
 
         onDestroy(() => {
             localStorage.setItem("text", input_text);
         });
 
         window.addEventListener("beforeunload", (event) => {
-        if (localStorage.getItem("text") !== text){
-            event.preventDefault();
-            event.returnValue = "";
-            
-        }});
+            if (localStorage.getItem("text") !== text) {
+                event.preventDefault();
+                event.returnValue = "";
+            }
+        });
     }
 
     $: {
@@ -97,6 +96,6 @@
         height: 50vh;
         font-size: 18px;
         line-height: 24px;
-        font-family:inherit;
+        font-family: inherit;
     }
 </style>
