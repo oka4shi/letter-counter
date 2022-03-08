@@ -1,4 +1,5 @@
-/**
- * Can be made globally available by placing this
- * inside `global.d.ts` and removing `export` keyword
- */
+export type LetterCounts = {
+    letterCount: number;
+    withoutSpacesCount: number;
+    wordCount: number;
+};
