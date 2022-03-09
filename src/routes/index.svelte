@@ -1,17 +1,19 @@
 <script context="module">
     import { browser } from "$app/env";
     import { onDestroy } from "svelte";
-
     import { count } from "$lib/count";
 </script>
 
 <script lang="ts">
     import type { LetterCounts } from "$lib/types";
 
+    let textarea: HTMLTextAreaElement;
     let text = "";
     let counts: LetterCounts;
+    let selected_counts: LetterCounts;
 
     let input_text = "";
+    let selected_text = "";
     let saved_date = "";
 
     /* Save and load from localStorage */
@@ -45,18 +47,44 @@
     }
 
     $: {
-        counts = count(text);
         input_text = text;
+        if (textarea) {
+            count_selected();
+        }
+
+        counts = count(text);
+        selected_counts = count(selected_text);
     }
+
+    let timer: number;
+    const start_count = () => {
+        timer = window.setInterval(() => {
+            count_selected();
+        }, 50);
+    };
+
+    const stop_count = () => {
+        window.clearInterval(timer);
+    };
+
+    const count_selected = () => {
+        selected_text = text.substring(textarea.selectionStart, textarea.selectionEnd);
+    };
 </script>
 
 <svelte:head>
     <title>Home - 文字数カウンター</title>
 </svelte:head>
 
-<section class="content">
+<section class="content" on:mousedown={start_count} on:mouseup={stop_count}>
     <p>ブラウザへの最終保存:{saved_date}</p>
-    <textarea bind:value={text} autocomplete="off" />
+    <textarea
+        bind:value={text}
+        bind:this={textarea}
+        on:select={count_selected}
+        on:click={count_selected}
+        autocomplete="off"
+    />
     <table>
         <thead>
             <tr>
@@ -68,17 +96,17 @@
         <tr>
             <th>文字数</th>
             <td>{counts.letterCount}</td>
-            <td />
+            <td>{selected_counts.letterCount}</td>
         </tr>
         <tr>
             <th>文字数(空白以外)</th>
             <td>{counts.withoutSpacesCount}</td>
-            <td />
+            <td>{selected_counts.withoutSpacesCount}</td>
         </tr>
         <tr>
             <th>単語数(英語)</th>
             <td>{counts.wordCount}</td>
-            <td />
+            <td>{selected_counts.wordCount}</td>
         </tr>
     </table>
 </section>
