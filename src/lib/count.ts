@@ -1,3 +1,5 @@
+import type { LetterCounts } from "$lib/types" 
+
 const count_num = (text: string): number => [...text].length;
 
 const delete_spaces = (text: string): string => {
