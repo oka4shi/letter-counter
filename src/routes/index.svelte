@@ -122,7 +122,6 @@
     }
 
     textarea {
-        width: 100%;
         height: 50vh;
         font-size: 18px;
         line-height: 24px;

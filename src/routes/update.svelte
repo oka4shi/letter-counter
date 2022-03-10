@@ -29,6 +29,7 @@
             <h3><time datetime="2022-03-10">2022年3月10日</time></h3>
             <ul>
                 <li>このページ(更新履歴)を作成</li>
+                <li>文字入力部分のはみ出しを修正</li>
             </ul>
         </section>
         <section>
