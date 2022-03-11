@@ -1,6 +1,7 @@
 # Letter counter
 
 Svelte/SvelteKit を利用した文字数カウンターです
+
 A letter counter using Svelte/SvelteKit
 
 ## To run locally and build
