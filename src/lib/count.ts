@@ -1,4 +1,4 @@
-import type { LetterCounts } from "$lib/types" 
+import type { LetterCounts } from "$lib/types";
 
 const count_num = (text: string): number => [...text].length;
 
@@ -20,12 +20,12 @@ const count_words = (text: string): number => {
 
 export const count = (text: string): LetterCounts => {
     const letter_count = count_num(text);
-    const without_spaces = count_num(delete_spaces(text))
-    const word_count = count_words(text)
+    const without_spaces = count_num(delete_spaces(text));
+    const word_count = count_words(text);
 
     return {
         letterCount: letter_count,
-        withoutSpacesCount:without_spaces,
-        wordCount:word_count
+        withoutSpacesCount: without_spaces,
+        wordCount: word_count,
     };
 };
