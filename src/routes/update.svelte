@@ -26,6 +26,12 @@
 
     <main>
         <section>
+            <h3><time datetime="2022-03-18">2022年3月18日</time></h3>
+            <ul>
+                <li>正規表現を調整しパフォーマンスを向上</li>
+            </ul>
+        </section>
+        <section>
             <h3><time datetime="2022-03-10">2022年3月10日</time></h3>
             <ul>
                 <li>このページ(更新履歴)を作成</li>
