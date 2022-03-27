@@ -8,13 +8,12 @@ A letter counter using Svelte/SvelteKit
 
 Run locally: `npm run dev`
 
-Building: `npm run build`
-
+Build: `npm run build`
 
 ## License
 
 This application is licensed under the MIT License.
 
-Contributors:
+Contributor:
 
 -   [Nishide Itaru (@goahi)](https://github.com/goahi)
