@@ -1,7 +1,3 @@
-<script context="module">
-    export const hydrate = true;
-</script>
-
 <svelte:head>
     <title>Update - 文字数カウンター</title>
 </svelte:head>
@@ -22,6 +18,7 @@
             <ul>
                 <li>ローディングバーを追加</li>
                 <li>ヘッダーのデザインを変更</li>
+                <li>トップページ以外にアクセスした場合に一部の機能が動作しなかったバグを修正</li>
             </ul>
         </section>
         <section>
