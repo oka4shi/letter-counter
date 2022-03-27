@@ -11,9 +11,11 @@
 
 <footer>
     <p>
-        Copyright (c) 2022 Goahi some rights reserved. This application is licensed under the MIT license.
-        GitHub:
-        <a href="https://github.com/goahi/letter-counter" target="_blank" rel="noopener noreferrer">goahi/letter-counter</a>
+        Copyright (c) 2022 Goahi some rights reserved. This application is licensed under the MIT
+        license. GitHub:
+        <a href="https://github.com/goahi/letter-counter" target="_blank" rel="noopener noreferrer"
+            >goahi/letter-counter</a
+        >
     </p>
 </footer>
 
