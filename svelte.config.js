@@ -11,16 +11,6 @@ const config = {
         adapter: adapter({
             out: "build",
             precompress: false,
-            env: {
-                path: "SOCKET_PATH",
-                host: "HOST",
-                port: "PORT",
-                origin: "ORIGIN",
-                headers: {
-                    protocol: "PROTOCOL_HEADER",
-                    host: "HOST_HEADER",
-                },
-            },
         }),
 
         prerender: {
