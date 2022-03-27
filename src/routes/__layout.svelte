@@ -1,10 +1,14 @@
 <script lang="ts">
+    import LoadingBar from "$lib/LoadingBar.svelte";
     import Header from "$lib/Header.svelte";
     import "../app.css";
 </script>
 
 <Header />
 
+<div>
+    <LoadingBar />
+</div>
 <main>
     <slot />
 </main>
