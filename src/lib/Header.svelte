@@ -49,6 +49,7 @@
 
     @media only screen and (max-width: 599px) {
         header {
+            position: absolute;
             flex-direction: column;
         }
 

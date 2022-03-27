@@ -29,6 +29,7 @@
             <h3><time datetime="2022-03-27">2022年3月27日</time></h3>
             <ul>
                 <li>ローディングバーを追加</li>
+                <li>ヘッダーのデザインを変更</li>
             </ul>
         </section>
         <section>
