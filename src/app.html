@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
-	<head>
+	<head prefix="og:http://ogp.me/ns#">
 		<meta charset="utf-8" />
-		<meta name="description" content="文字数をカウントしてくれるツールです" />
+		<meta name="description" content="文字数をリアルタイムにカウントするツールです。選択部分だけのカウントや英単語数のカウントもできます。" />
 		<link rel="icon" href="%svelte.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+                <meta property="og:url" content="https://letter-counter.goahi2.ga" />
+                <meta property="og:title" content="文字数カウンター">
+                <meta property="og:type" content="website">
+                <meta property="og:description" content="文字数をリアルタイムにカウントするツールです。選択部分だけのカウントや英単語数のカウント機能もできます。">
+
 		%svelte.head%
 	</head>
 	<body>
