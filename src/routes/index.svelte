@@ -123,6 +123,7 @@
 
     textarea {
         height: 50vh;
+        height: 50dvh;
         font-size: 18px;
         line-height: 24px;
         font-family: inherit;
