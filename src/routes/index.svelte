@@ -1,11 +1,13 @@
 <script context="module">
     import { browser } from "$app/env";
-    import { onDestroy } from "svelte";
+    import { onMount, onDestroy } from "svelte";
     import { count } from "$lib/count";
 </script>
 
 <script lang="ts">
     import type { LetterCounts } from "$lib/types";
+
+    const autosave_interval = 5;
 
     let textarea: HTMLTextAreaElement;
     let text = "";
@@ -17,8 +19,18 @@
     let saved_date = "";
 
     /* Save and load from localStorage */
-    const autosave_interval = 5;
+    const save_to_localstorage = () => {
+        localStorage.setItem("text", input_text);
+        const now = new Date();
+        saved_date = now.toLocaleTimeString();
+    };
     if (browser) {
+        const unload_check = (event: any) => {
+            if (localStorage.getItem("text") !== text) {
+                event.preventDefault();
+                event.returnValue = "";
+            }
+        };
         const stored_text = localStorage.getItem("text");
 
         text = stored_text === null ? "" : stored_text;
@@ -26,24 +38,22 @@
         const now = new Date();
         saved_date = now.toLocaleTimeString();
 
-        setInterval(() => {
-            if (localStorage.getItem("text") !== text) {
-                localStorage.setItem("text", input_text);
-                const now = new Date();
-                saved_date = now.toLocaleTimeString();
-            }
-        }, autosave_interval * 1000);
+        let interval: number;
+        onMount(() => {
+            interval = window.setInterval(() => {
+                if (localStorage.getItem("text") !== text) {
+                    save_to_localstorage();
+                }
+            }, autosave_interval * 1000);
+        });
 
         onDestroy(() => {
+            window.clearInterval(interval);
+            window.removeEventListener("beforeunload", unload_check);
             localStorage.setItem("text", input_text);
         });
 
-        window.addEventListener("beforeunload", (event) => {
-            if (localStorage.getItem("text") !== text) {
-                event.preventDefault();
-                event.returnValue = "";
-            }
-        });
+        window.addEventListener("beforeunload", unload_check);
     }
 
     $: {
@@ -77,7 +87,10 @@
 </svelte:head>
 
 <section class="content" on:mousedown={start_count} on:mouseup={stop_count}>
-    <p>ブラウザへの最終保存:{saved_date}</p>
+    <div class="save_display">
+        <p>ブラウザへの最終保存:{saved_date}</p>
+        <button id="save" on:click={save_to_localstorage}>今すぐ保存</button>
+    </div>
     <textarea
         bind:value={text}
         bind:this={textarea}
@@ -119,6 +132,42 @@
         display: flex;
         flex-direction: column;
         flex: 1;
+    }
+
+    .save_display {
+        display: flex;
+        align-items: center;
+    }
+    .save_display p {
+        min-width: 26ch;
+        line-height: 1;
+    }
+
+    .save_display button {
+        display: inline;
+        margin: 0 0.5em;
+        padding: 0.375em 0.625em;
+        border-radius: 0.5em;
+
+        background: var(--pure-white);
+        color: var(--text-color);
+
+        font-size: 1rem;
+        font-weight: 500;
+
+        border: none;
+        outline: none;
+        -webkit-appearance: none;
+        appearance: none;
+        cursor: pointer;
+    }
+
+    .save_display button:hover {
+        opacity: 0.85;
+    }
+
+    .save_display button:active {
+        opacity: 0.75;
     }
 
     textarea {

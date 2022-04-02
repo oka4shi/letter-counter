@@ -14,6 +14,13 @@
 
     <main>
         <section>
+            <h3><time datetime="2022-04-02">2022年4月2日</time></h3>
+            <ul>
+                <li>「今すぐ保存」ボタンを追加</li>
+                <li>保存に関するバグの修正</li>
+            </ul>
+        </section>
+        <section>
             <h3><time datetime="2022-03-27">2022年3月27日</time></h3>
             <ul>
                 <li>ローディングバーを追加</li>
