@@ -89,7 +89,7 @@
 <section class="content" on:mousedown={start_count} on:mouseup={stop_count}>
     <div class="save_display">
         <p>ブラウザへの最終保存:{saved_date}</p>
-        <button id="save" on:click={save_to_localstorage}>今すぐ保存</button>
+        <button id="save" on:click={save_to_localstorage}>保存</button>
     </div>
     <textarea
         bind:value={text}
@@ -220,5 +220,12 @@
     }
     table thead th:nth-of-type(3) {
         width: 32.5%;
+    }
+
+    @media not all and (min-width: 600px) {
+        table th,
+        table td {
+            padding: 0.375rem 0;
+        }
     }
 </style>

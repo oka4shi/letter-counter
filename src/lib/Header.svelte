@@ -47,7 +47,7 @@
         justify-content: center;
     }
 
-    @media only screen and (max-width: 599px) {
+    @media not all and (min-width: 600px) {
         header {
             position: absolute;
             flex-direction: column;
