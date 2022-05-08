@@ -17,6 +17,7 @@
             <h3><time datetime="2022-05-08">2022年5月8日</time></h3>
             <ul>
                 <li>スマホ向けデザインを調整</li>
+                <li>PWAに対応</li>
             </ul>
         </section>
         <section>

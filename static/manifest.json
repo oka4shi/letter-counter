@@ -1,0 +1,17 @@
+{
+    "short_name": "文字数",
+    "name": "文字数カウンター",
+    "start_url": "/",
+    "icons": [
+      {
+        "src": "favicon.png",
+        "type": "image/png",
+        "sizes": "256x256"
+      }
+    ],
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#2e3134",
+    "description": "文字数をリアルタイムにカウントするツールです。選択部分だけのカウントや英単語数のカウントもできます。"
+}
