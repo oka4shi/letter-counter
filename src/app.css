@@ -2,14 +2,36 @@
     font-family: "Helvetica Neue", "Segoe UI", "Arial", "Hiragino Kaku Gothic ProN", "Hiragino Sans",
         -apple-system, "Noto Sans Japanese", "Noto Sans CJK JP", "Mieryo", sans-serif;
     --pure-white: #ffffff;
-    --primary-color: #b9c6d2;
-    --secondary-color: #d0dde9;
-    --tertiary-color: #edf0f8;
+    --primary-color: hsl(0, 0%, 15%);
+    --secondary-color: hsl(0, 0%, 20%);
+    --tertiary-color: hsl(0, 0%, 10%);
     --accent-color: #ff3e00;
-    --text-color: #444444;
+    --text-color: hsl(0, 0%, 90%);
     --background-without-opacity: rgba(255, 255, 255, 0.7);
     --column-width: 42rem;
     --column-margin-top: 4rem;
+}
+
+@font-face {
+    font-family: "icomoon";
+    src: url("/icomoon.ttf") format("truetype"), url("/icomoon.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.icomoon {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: "icomoon" !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -17,29 +39,7 @@ body {
     min-height: 100dvh;
     margin: 0;
     background-color: var(--primary-color);
-    background: linear-gradient(
-        180deg,
-        var(--primary-color) 0%,
-        var(--secondary-color) 10.45%,
-        var(--tertiary-color) 41.35%
-    );
-}
-
-body::before {
-    content: "";
-    width: 80vw;
-    height: 100vh;
-    height: 100dvh;
-    position: absolute;
-    top: 0;
-    left: 10vw;
-    z-index: -1;
-    background: radial-gradient(
-        50% 50% at 50% 50%,
-        var(--pure-white) 0%,
-        rgba(255, 255, 255, 0) 100%
-    );
-    opacity: 0.05;
+    position: relative;
 }
 
 #svelte {
@@ -47,13 +47,19 @@ body::before {
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 
 h1,
 h2,
-p {
+h3,
+p,
+span,
+li {
     font-weight: 400;
-    color: var(--heading-color);
+    color: var(--text-color);
 }
 
 p {

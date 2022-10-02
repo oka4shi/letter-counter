@@ -4,6 +4,7 @@
 
     import { save_to_localstorage } from "$lib/save";
 
+    export let input_text: string;
     let saved_date: string;
 
     function toggle_menu() {
@@ -17,6 +18,10 @@
             return false;
         });
     });
+
+    const save = () => {
+        save_to_localstorage(input_text);
+    };
 </script>
 
 <header>
@@ -28,6 +33,7 @@
         </div>
         <span class="aria">メニューを開く</span>
     </button>
+    <button id="save" on:click={save}>保存</button>
 </header>
 
 <style>
@@ -96,5 +102,32 @@
         header {
             position: absolute;
         }
+    }
+
+    #save {
+        display: inline;
+        margin: 0 0.5em;
+        padding: 0.375em 0.625em;
+        border-radius: 0.5em;
+
+        background: var(--pure-white);
+        color: var(--primary-color);
+
+        font-size: 1rem;
+        font-weight: 500;
+
+        border: none;
+        outline: none;
+        -webkit-appearance: none;
+        appearance: none;
+        cursor: pointer;
+    }
+
+    #save:hover {
+        opacity: 0.85;
+    }
+
+    #save:active {
+        opacity: 0.75;
     }
 </style>

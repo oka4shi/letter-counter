@@ -1,0 +1,18 @@
+.icon-copy:before {
+    content: "\e92d";
+}
+.icon-delete:before {
+    content: "\e9ac";
+}
+.icon-menu:before {
+    content: "\e9bd";
+}
+.icon-bigger:before {
+    content: "\ea0a";
+}
+.icon-smaller:before {
+    content: "\ea0b";
+}
+.icon-info:before {
+    content: "\ea0c";
+}
