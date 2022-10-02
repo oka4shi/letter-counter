@@ -124,7 +124,7 @@
             height: calc(100vh - var(--column-margin-top));
         }
         textarea {
-            height: calc(100vh - 5rem);
+            height: calc(100vh - 10rem);
             background: var(--primary-color);
             resize: none;
             outline: none;

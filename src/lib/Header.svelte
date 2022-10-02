@@ -36,7 +36,7 @@
     }
     header {
         width: 100%;
-        min-height: 3.5rem;
+        min-height: 3rem;
         position: fixed;
         top: 0;
         left: 0;

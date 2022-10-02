@@ -93,7 +93,7 @@
         bottom: 0;
 
         width: 100vw;
-        height: 7rem;
+        height: 6rem;
         padding: 0;
         border-radius: 30px 40px 0 0;
         border: 3px solid var(--secondary-color);
@@ -105,7 +105,7 @@
     }
 
     .sp_display p {
-        margin: 0.5rem;
+        margin: 0.375rem;
         margin-left: 1rem;
     }
 
