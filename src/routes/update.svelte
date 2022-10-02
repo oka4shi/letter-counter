@@ -4,7 +4,7 @@
 
 <article id="update">
     <header>
-        <h2>アップデート履歴</h2>
+        <h2>更新履歴</h2>
         <p>
             これまでの更新履歴をまとめています。<br />
             全ての更新履歴は<a href="https://github.com/goahi/letter-counter/commits/main">GitHub</a
@@ -13,6 +13,14 @@
     </header>
 
     <main>
+        <section>
+            <h3><time datetime="2022-10-02">2022年10月2日</time></h3>
+            <ul>
+                <li>ダークテーマ基調に</li>
+                <li>スマホ向けデザインを大幅に刷新</li>
+                <li>メニューのデザインを変更(機能を追加できるように)</li>
+            </ul>
+        </section>
         <section>
             <h3><time datetime="2022-05-08">2022年5月8日</time></h3>
             <ul>

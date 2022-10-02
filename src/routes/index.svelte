@@ -6,8 +6,12 @@
 
 <script lang="ts">
     import type { LetterCounts } from "$lib/types";
+    import ToolBar from "$lib/ToolBar.svelte";
+    import Display from "$lib/Display.svelte";
+    import { save_to_localstorage } from "$lib/save";
 
     const autosave_interval = 5;
+    let placeholder = "読み込み中……";
 
     let textarea: HTMLTextAreaElement;
     let text = "";
@@ -19,11 +23,6 @@
     let saved_date = "";
 
     /* Save and load from localStorage */
-    const save_to_localstorage = () => {
-        localStorage.setItem("text", input_text);
-        const now = new Date();
-        saved_date = now.toLocaleTimeString();
-    };
     if (browser) {
         const unload_check = (event: any) => {
             if (localStorage.getItem("text") !== text) {
@@ -40,9 +39,10 @@
 
         let interval: number;
         onMount(() => {
+            placeholder = "ここにテキストを入力するとカウントされます";
             interval = window.setInterval(() => {
                 if (localStorage.getItem("text") !== text) {
-                    save_to_localstorage();
+                    save_to_localstorage(input_text);
                 }
             }, autosave_interval * 1000);
         });
@@ -86,42 +86,18 @@
     <title>Home - 文字数カウンター</title>
 </svelte:head>
 
+<ToolBar {input_text} />
+
 <section class="content" on:mousedown={start_count} on:mouseup={stop_count}>
-    <div class="save_display">
-        <p>ブラウザへの最終保存:{saved_date}</p>
-        <button id="save" on:click={save_to_localstorage}>保存</button>
-    </div>
     <textarea
+        {placeholder}
         bind:value={text}
         bind:this={textarea}
         on:select={count_selected}
         on:click={count_selected}
         autocomplete="off"
     />
-    <table>
-        <thead>
-            <tr>
-                <th>種類</th>
-                <th>全体</th>
-                <th>選択部分</th>
-            </tr>
-        </thead>
-        <tr>
-            <th>文字数</th>
-            <td>{counts.letterCount}</td>
-            <td>{selected_counts.letterCount}</td>
-        </tr>
-        <tr>
-            <th>文字数(空白以外)</th>
-            <td>{counts.withoutSpacesCount}</td>
-            <td>{selected_counts.withoutSpacesCount}</td>
-        </tr>
-        <tr>
-            <th>単語数(英語)</th>
-            <td>{counts.wordCount}</td>
-            <td>{selected_counts.wordCount}</td>
-        </tr>
-    </table>
+    <Display {counts} {selected_counts} />
 </section>
 
 <style>
@@ -134,98 +110,27 @@
         flex: 1;
     }
 
-    .save_display {
-        display: flex;
-        align-items: center;
-    }
-    .save_display p {
-        min-width: 26ch;
-        line-height: 1;
-    }
-
-    .save_display button {
-        display: inline;
-        margin: 0 0.5em;
-        padding: 0.375em 0.625em;
-        border-radius: 0.5em;
-
-        background: var(--pure-white);
-        color: var(--text-color);
-
-        font-size: 1rem;
-        font-weight: 500;
-
-        border: none;
-        outline: none;
-        -webkit-appearance: none;
-        appearance: none;
-        cursor: pointer;
-    }
-
-    .save_display button:hover {
-        opacity: 0.85;
-    }
-
-    .save_display button:active {
-        opacity: 0.75;
-    }
-
     textarea {
         height: 50vh;
         height: 50dvh;
         font-size: 18px;
         line-height: 24px;
         font-family: inherit;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        border-spacing: 0;
-
-        table-layout: fixed;
-        width: 100%;
-    }
-
-    table th,
-    table td {
-        padding: 0.75rem 0;
-        text-align: center;
-        border: solid 2px #fff;
-    }
-
-    table thead th {
-        background-color: #576ca8;
-        color: var(--tertiary-color);
-    }
-
-    table tr:nth-child(2n + 1) {
-        background-color: #eee;
-    }
-
-    table th {
-        font-size: 1.125rem;
-    }
-
-    table td {
-        font-size: 1.625rem;
-    }
-
-    table thead th:nth-of-type(1) {
-        width: 35%;
-    }
-
-    table thead th:nth-of-type(2) {
-        width: 32.5%;
-    }
-    table thead th:nth-of-type(3) {
-        width: 32.5%;
+        margin: 0;
     }
 
     @media not all and (min-width: 600px) {
-        table th,
-        table td {
-            padding: 0.375rem 0;
+        section {
+            height: calc(100vh - var(--column-margin-top));
+        }
+        textarea {
+            height: calc(100vh - 5rem);
+            background: var(--primary-color);
+            resize: none;
+            outline: none;
+            border: none;
+            color: var(--text-color);
+            margin: 0 1rem;
         }
     }
 </style>
