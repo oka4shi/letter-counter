@@ -1,40 +1,34 @@
 <script lang="ts">
-    import { afterNavigate } from "$app/navigation";
     import { menu } from "$lib/store";
-    import MenuButton from "$lib/MenuButton.svelte";
 
-    afterNavigate(() => {
-        menu.update(() => {
-            return false;
-        });
+    let is_menu_open: boolean;
+    menu.subscribe((value) => {
+        is_menu_open = value;
     });
+
+    function toggle_menu() {
+        menu.update((is_open) => {
+            return !is_open;
+        });
+    }
 </script>
 
-<header>
-    <MenuButton />
-</header>
+<button
+    id="menu"
+    type="button"
+    aria-expanded={is_menu_open}
+    aria-controls="global-nav"
+    on:click={toggle_menu}
+>
+    <div class="menu_icon_wrapper">
+        <div class="menu_icon" />
+        <div class="menu_icon" />
+        <div class="menu_icon" />
+    </div>
+    <span class="aria">メニューを開く</span>
+</button>
 
 <style>
-    :root {
-        --size: 3px;
-    }
-    header {
-        width: 100%;
-        min-height: 3rem;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 100;
-
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: row;
-        align-items: center;
-
-        background-color: hsl(0, 0%, 10%);
-        border-bottom: 2px solid var(--secondary-color);
-    }
-
     #menu {
         margin: 0 1rem;
 
@@ -74,11 +68,5 @@
         padding: 0;
         clip-path: inset(50%);
         margin: -1px;
-    }
-
-    @media not all and (min-width: 600px) {
-        header {
-            position: absolute;
-        }
     }
 </style>
