@@ -12,10 +12,6 @@ const config = {
             out: "build",
             precompress: false,
         }),
-
-        prerender: {
-            default: true,
-        },
     },
 };
 
