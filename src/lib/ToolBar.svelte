@@ -8,12 +8,6 @@
     export let input_text: string;
     let saved_date: string;
 
-    afterNavigate(() => {
-        menu.update(() => {
-            return false;
-        });
-    });
-
     const save = () => {
         save_to_localstorage(input_text);
     };

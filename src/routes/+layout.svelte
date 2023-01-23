@@ -1,6 +1,7 @@
 <script lang="ts">
     import { afterNavigate } from "$app/navigation";
     import { page } from "$app/stores";
+    import { menu } from "$lib/store";
 
     import LoadingBar from "$lib/LoadingBar.svelte";
     import Header from "$lib/Header.svelte";
@@ -10,6 +11,10 @@
     let isNotTopPage: boolean;
     afterNavigate(() => {
         isNotTopPage = $page.url.pathname !== "/";
+
+        menu.update(() => {
+            return false;
+        });
     });
 </script>
 
