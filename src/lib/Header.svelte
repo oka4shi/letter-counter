@@ -6,6 +6,11 @@
 
     let saved_date: string;
 
+    let is_menu_open: boolean;
+    menu.subscribe((value) => {
+        is_menu_open = value;
+    });
+
     function toggle_menu() {
         menu.update((is_open) => {
             return !is_open;
@@ -20,7 +25,13 @@
 </script>
 
 <header>
-    <button id="menu" type="button" aria-controls="global-nav" on:click={toggle_menu}>
+    <button
+        id="menu"
+        type="button"
+        aria-expanded={is_menu_open}
+        aria-controls="global-nav"
+        on:click={toggle_menu}
+    >
         <div class="menu_icon_wrapper">
             <div class="menu_icon" />
             <div class="menu_icon" />
