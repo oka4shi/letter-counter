@@ -111,9 +111,10 @@
 
     main ul {
         padding-left: 1.5em;
+        margin: 0.5em 0;
     }
 
     section {
-        padding: 0.25rem 0;
+        padding: 0.5rem 0;
     }
 </style>

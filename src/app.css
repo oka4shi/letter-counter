@@ -66,6 +66,7 @@ span,
 li {
     font-weight: 400;
     color: var(--text-color);
+    margin: 0.5em 0;
 }
 
 p {
