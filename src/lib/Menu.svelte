@@ -33,7 +33,7 @@
         position: fixed;
         margin-top: 3.5rem;
         top: 0;
-        background: var(--tertiary-color);
+        background: var(--secondary-color);
     }
 
     ul {
