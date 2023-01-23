@@ -42,6 +42,12 @@ body {
     position: relative;
 }
 
+@media (min-width: 720px) {
+    body {
+        background-color: var(--tertiary-color);
+    }
+}
+
 #svelte {
     min-height: 100vh;
     min-height: 100dvh;

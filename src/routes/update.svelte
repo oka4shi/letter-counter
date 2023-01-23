@@ -14,6 +14,12 @@
 
     <main>
         <section>
+            <h3><time datetime="2023-1-23">2023年1月23日</time></h3>
+            <ul>
+                <li>PC向けデザインを調整</li>
+            </ul>
+        </section>
+        <section>
             <h3><time datetime="2022-10-02">2022年10月2日</time></h3>
             <ul>
                 <li>ダークテーマ基調に</li>

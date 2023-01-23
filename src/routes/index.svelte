@@ -117,6 +117,9 @@
         line-height: 24px;
         font-family: inherit;
         margin: 0;
+        background: var(--primary-color);
+        color: var(--text-color);
+        border: 0;
     }
 
     @media not all and (min-width: 600px) {
@@ -125,11 +128,9 @@
         }
         textarea {
             height: calc(100vh - 10rem);
-            background: var(--primary-color);
             resize: none;
             outline: none;
             border: none;
-            color: var(--text-color);
             margin: 0 1rem;
         }
     }
