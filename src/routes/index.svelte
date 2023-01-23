@@ -119,7 +119,9 @@
         margin: 0;
         background: var(--primary-color);
         color: var(--text-color);
-        border: 0;
+        resize: vertical;
+        outline: none;
+        border: none;
     }
 
     @media not all and (min-width: 600px) {
@@ -129,8 +131,6 @@
         textarea {
             height: calc(100vh - 10rem);
             resize: none;
-            outline: none;
-            border: none;
             margin: 0 1rem;
         }
     }
