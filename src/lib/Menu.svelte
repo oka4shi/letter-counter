@@ -3,14 +3,14 @@
     import { quintOut } from "svelte/easing";
     import { menu } from "$lib/store";
 
-    let open: boolean;
+    let is_menu_open: boolean;
     menu.subscribe((value) => {
-        open = value;
+        is_menu_open = value;
     });
 </script>
 
-{#if open}
-    <nav transition:slide={{ easing: quintOut }}>
+{#if is_menu_open}
+    <nav id="global-nav" transition:slide={{ easing: quintOut }}>
         <ul>
             <li>
                 <a sveltekit:prefetch href="/">トップ</a>
