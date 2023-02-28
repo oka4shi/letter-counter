@@ -10,7 +10,6 @@
     import Display from "$lib/Display.svelte";
     import { save_to_localstorage } from "$lib/save";
 
-    const autosave_interval = 5;
     let placeholder = "読み込み中……";
 
     let textarea: HTMLTextAreaElement;
@@ -22,38 +21,47 @@
     let selected_text = "";
     let saved_date = "";
 
+    const unload_check = (event: any) => {
+        if (localStorage.getItem("text") !== text) {
+            event.preventDefault();
+            event.returnValue = "";
+        }
+    };
+
+    const start_autosave = (autosave_interval: number) => {
+        placeholder = "ここにテキストを入力するとカウントされます";
+
+        window.addEventListener("beforeunload", unload_check);
+        const autosave_interval_id = window.setInterval(() => {
+            if (localStorage.getItem("text") !== text) {
+                save_to_localstorage(input_text);
+            }
+        }, autosave_interval * 1000);
+        return autosave_interval_id;
+    };
+
+    const stop_autosave = (interval_id: number) => {
+        window.clearInterval(interval_id);
+        window.removeEventListener("beforeunload", unload_check);
+        localStorage.setItem("text", input_text);
+    };
+
     /* Save and load from localStorage */
     if (browser) {
-        const unload_check = (event: any) => {
-            if (localStorage.getItem("text") !== text) {
-                event.preventDefault();
-                event.returnValue = "";
-            }
-        };
         const stored_text = localStorage.getItem("text");
 
-        text = stored_text === null ? "" : stored_text;
+        text = stored_text;
+        if (text === null) {
+            text = "";
+        }
 
         const now = new Date();
         saved_date = now.toLocaleTimeString();
 
-        let interval: number;
         onMount(() => {
-            placeholder = "ここにテキストを入力するとカウントされます";
-            interval = window.setInterval(() => {
-                if (localStorage.getItem("text") !== text) {
-                    save_to_localstorage(input_text);
-                }
-            }, autosave_interval * 1000);
+            const autosave_interval_id = start_autosave(5);
+            return stop_autosave(autosave_interval_id); //called when the component is unmounted
         });
-
-        onDestroy(() => {
-            window.clearInterval(interval);
-            window.removeEventListener("beforeunload", unload_check);
-            localStorage.setItem("text", input_text);
-        });
-
-        window.addEventListener("beforeunload", unload_check);
     }
 
     $: {
@@ -66,15 +74,15 @@
         selected_counts = count(selected_text);
     }
 
-    let timer: number;
+    let timer_id: number;
     const start_count = () => {
-        timer = window.setInterval(() => {
+        timer_id = window.setInterval(() => {
             count_selected();
         }, 50);
     };
 
     const stop_count = () => {
-        window.clearInterval(timer);
+        window.clearInterval(timer_id);
     };
 
     const count_selected = () => {
