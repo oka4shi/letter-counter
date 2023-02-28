@@ -60,7 +60,7 @@
 
         onMount(() => {
             const autosave_interval_id = start_autosave(5);
-            return stop_autosave(autosave_interval_id); //called when the component is unmounted
+            return () => stop_autosave(autosave_interval_id); //called when the component is unmounted
         });
     }
 
