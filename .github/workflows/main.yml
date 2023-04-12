@@ -1,0 +1,32 @@
+name: create new branch
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the main branch
+        uses: actions/checkout@v2
+        with:
+          ref: main
+
+      - name: Create a cloudflare Branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git fetch origin
+          git checkout -b cloudflare
+          git reset --hard origin/main
+          
+      - name: Change an adapter for CloudFlare
+        run: |
+          sed -i 's/"@sveltejs\/adapter-.*"/"@sveltejs\/adapter-cloudflare"/' svelte.config.js
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "Change an adapter for CloudFlare"
+          git push --force origin cloudflare
